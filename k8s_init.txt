@@ -25,3 +25,5 @@ kubeadm join 172.31.26.252:6443 --token fe2c3w.1zh5y14acchgp9ax \
 
 if control plane/master is in not ready state
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+sudo kubectl get nodes

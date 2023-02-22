@@ -1,3 +1,4 @@
+#yml file for simple pod with two containers
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,3 +13,18 @@ spec:
   - name: alpine
     image: alpine:3.5
     command: ["watch", "wget", "-qO-", "localhost"]
+    
+Commands
+Create Pod  : kubectl create -f <<____.yml>>
+Status Check: kubectl get pods -o wide
+              kubectl describe pod <<pod_name>>
+Untaint     : kubectl taint nodes --all node-role.kubernetes.io/master-
+              kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+              
+network configuration:
+sudo vi /run/flannel/subnet.env and add below script
+FLANNEL_NETWORK=10.244.0.0/16
+FLANNEL_SUBNET=10.244.0.1/24
+FLANNEL_MTU=1450
+FLANNEL_IPMASQ=true
+
